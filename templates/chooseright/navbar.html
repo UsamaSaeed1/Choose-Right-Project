@@ -1,0 +1,22 @@
+<div class="Navigation-wrapper" role="navigation">
+
+	<div class="Navigation-tablist" role="tablist">
+		<ul class="navigation-menu">
+			<li class="navigation-menu-items"><a class="home" href="{% url 'core:home' %}" role="tab"><div>Home</div></a>
+			</li>
+			<li class="navigation-menu-items"><a class="wishlist" href="{% url 'users:wish_list' %}" role="tab"><div>Wishlist</div></a>
+			</li>
+			<li class="navigation-menu-items"><a class="catagories" href="#" role="tab">
+				<div>Catagories</div></a>
+				<ul class="sub-catagories">
+					{% for catagories in catagory %}
+						<li class="sub-catagories-items">
+							<a href="{% url 'core:catagory' slug_text=catagories.slug %}">{{catagories.name}}</a>
+						</li>
+					{% endfor %}
+				</ul>
+				
+			</li>
+		</ul>
+	</div>
+</div>

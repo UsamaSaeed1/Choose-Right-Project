@@ -1,0 +1,49 @@
+{% extends 'users/index.html' %}
+{% load crispy_forms_tags %}
+
+{% block content %}
+
+	{% if messages %}
+		{% for message in messages %}
+			<div class="alert alert-{{ message.tags }}">
+				{{ message }}
+			</div>
+		{% endfor %}
+	{% endif %}
+
+
+	<input type="hidden" name="next" value="{{ next }}">
+
+<div class="signin-box-container">
+
+	<legend class="border-bottom mb-4">Log In</legend>
+	<div class="login-options">
+		<form method="POST" class="signin">
+			{% csrf_token %}
+			<fieldset class="form-group-main">
+				{{ form|crispy }}
+			</fieldset>
+
+			<div class="form-group-options">
+				<button class="btn btn-outline-primary form-button" type="submit">Log In</button>
+
+				<span class="text-muted forgot-password">
+					<a href="{% url 'users:password_reset' %}">Forgot Password?</a>
+				</span>
+			</div>
+			
+		</form>
+
+		{% include "users/social_accounts_login.html" %}
+
+	</div>
+
+	<div class="border-top pt-3">
+		<p class="text-muted">
+		Don't Have Access Yet?<a class="ml-2" href="{% url 'users:register' %}">Register & Get Access</a>
+	</p>
+	</div>
+		 
+</div>
+
+{% endblock content %}

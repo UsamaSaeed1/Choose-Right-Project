@@ -1,0 +1,124 @@
+{% extends 'chooseright/base.html' %}
+
+{% block content %}
+
+<div id="page-content" class="no-padding no-shadow">
+
+
+	<h2 class="page-title">My Account</h2>
+
+	<div class="no-padding no-shadow profile-content">
+		<div class="side-bar-menu-wrapper column-left-lg">
+
+			<div class="widget">
+
+				<div class="sidebar-widget">
+
+					<h2>My Apps</h2>
+					<hr>
+
+					<ul class="widget-list">
+
+						<li class="">
+							<a class="widget-link" href="{% url 'users:wish_list' %}">
+								<span>
+									<i class="far fa-heart"></i>
+									Wish List
+								</span>
+							</a>
+						</li>
+
+						<li class="">
+							<a class="widget-link" href="{% url 'users:feedback' %}">
+								<span>
+									<i class="fas fa-feather-alt"></i>
+									Feedback
+								</span>
+							</a>
+						</li>
+
+					</ul>
+
+				</div>
+
+			</div>
+
+			<div class="widget">
+
+				<div class="sidebar-widget">
+
+					<h2>Account Options</h2>
+					<hr>
+
+					<ul class="widget-list">
+						<li class="">
+							<a class="widget-link" href="{% url 'users:dash_board' %}">
+								<span>
+									<i class="fas fa-user-circle"></i>
+									Dashboard
+								</span>
+							</a>
+						</li>
+						<li class="">
+							<a class="widget-link" href="{% url 'users:change_password' %}">
+								<span>
+									<i class="fas fa-key"></i>
+									Change Password
+								</span>
+							</a>
+						</li>
+						<li class="">
+							<a class="widget-link" href="{% url 'users:profile' %}">
+								<span>
+									<i class="fas fa-user-cog"></i>
+									Update Profile
+								</span>
+							</a>
+						</li>
+					</ul>
+
+				</div>
+
+			</div>
+
+		</div>
+
+
+		<div class="column-right-lg">
+
+			<div class="dashboard-box">
+
+				<div class="account-options-header">
+					<span class="account-options-tittle">My Feedbacks </span>
+				</div>
+				<div class="account-options-content">
+					{% if feedback %}
+						{% for entity in feedback %}
+							<div class="feedback-row">
+								<a href="{{entity.screenshot.url}}">
+									<img class="feedback-img" src="{{entity.screenshot.url}}" alt="Screenshoot">
+								</a>
+								<div class="feedback-info">
+									<legend>Feedback Information</legend>
+									<span>Date Posted: {{ entity.created|date:"D, d M, Y" }}</span>
+									<br>
+									<span>Comment: {{entity.comment}}</span>
+									<br>
+									<span>Contact Email: {{entity.user.email}}</span>
+								</div>
+							</div>
+						{% endfor %}
+					{% else %}
+						<p class="empty-list">Sorry! You have not provided any feedback so far.</p>
+					{% endif %}
+				</div>
+			</div>
+
+			
+
+		</div>
+
+	</div>
+</div>
+
+{% endblock content %}

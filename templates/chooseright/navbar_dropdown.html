@@ -1,0 +1,60 @@
+<div id="nav-menu-dropdown-btn-toggle" class="nav-menu-dropdown-btn">
+	<div class="nav-menu-dropdown-btn_burger"></div>
+</div>
+
+<div id="nav-menu-dropdown-toggle" class="nav-menu-dropdown-overlay">
+
+	<ul id="nav-list" class="nav-menu-dropdown-nav-list">
+
+		<li class="nav-menu-item">
+			<i class="fas fa-home"></i>
+			<a href="{% url 'core:home' %}">Home</a>
+		</li>
+
+		<li class="nav-menu-item">
+			<i class="far fa-heart"></i>
+			<a href="{% url 'users:wish_list' %}">Wish List</a>
+		</li>
+
+		<li class="dropdown">
+			<button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+				<span><i class="fa fa-list" aria-hidden="true"></i><span>
+				<span>Catagories</span>
+			</button>
+			<div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+				{% for catagories in catagory %}
+				<a class="dropdown-item" href="{% url 'core:catagory' slug_text=catagories.slug %}">{{catagories.name}}</a>
+				{% endfor %}
+			</div>
+		</li>
+
+		{% comment %}
+		<li class="dropdown">
+			<button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+				<span><i class="fas fa-store"></i><span>
+				<span>Stores</span>
+			</button>
+			<div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+				{% for stores in store %}
+				<a class="dropdown-item" href="{% url 'core:store' slug_text=stores.slug %}">{{stores.name}}</a>
+				{% endfor %}
+			</div>
+		</li>
+		{% endcomment %}
+
+
+		<li class="dropdown">
+			<button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+				<span><i class="fas fa-tag"></i><span>
+				<span>Brands</span>
+			</button>
+			<div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+					{% for brands in brand %}
+					<a class="dropdown-item" href="{% url 'core:brand' slug_text=brands.slug %}">{{brands.name}}</a>
+					{% endfor %}
+			</div>
+		</li>
+
+	</ul>
+</div>
+

@@ -1,0 +1,322 @@
+<div class="pricing-area-wraper">
+
+	<div class="pricing-area-header">
+
+		<p1>Comparing Product</p1>
+
+	</div>
+
+	<div class="pricing-area-container">
+
+		<table class="compare-price">
+
+			<tbody>
+
+				<tr class="table-header-row">
+					<th scope="col">Store</th>
+					<th scope="col">Price</th>
+					<th scope="col">&nbsp;</th>
+					<th scope="col">&nbsp;</th>
+				</tr>
+
+				{% for i in query %}
+
+						{% if com_list.min_price == i.product_price and i.product_review == 'exellent' %}
+						<tr class="product-information" style="">
+							<td class="centeralign">
+								<img class="store-logo" alt="Store Logo" src="{% for s in store %}{% if s.store_id == i.store_id %}{{s.image.url}}{% endif %}{% endfor %}">
+							</td>
+
+							<td style="font-weight:bold;" class="txtprice" align="center">
+								<span>Rs. {{i.product_price}}</span>
+							</td>
+
+							<td class="lowest-price">
+								<img class="lowest-price-tag" id="lowest-price-tag_{{ forloop.counter }}" alt="Best Deal Tag" src="/static/chooseright/media/best deal.png">
+							</td>
+
+							<td class="centeralign text-center">
+								<div class="visit-store-btn">
+									<a href="{{i.store_link}}">Visit Store 
+										<i class="fas fa-long-arrow-alt-right"></i>
+									</a>
+
+								</div>
+							</td>
+						</tr>
+
+						{% elif com_list.min_price == i.product_price and i.product_review == 'good' %}
+						<tr class="product-information" style="">
+							<td class="centeralign">
+								<img class="store-logo" alt="Store Logo" src="{% for s in store %}{% if s.store_id == i.store_id %}{{s.image.url}}{% endif %}{% endfor %}">
+							</td>
+
+							<td style="font-weight:bold;" class="txtprice" align="center">
+								<span>Rs. {{i.product_price}}</span>
+							</td>
+
+							<td class="lowest-price">
+								<img class="lowest-price-tag" id="lowest-price-tag_{{ forloop.counter }}" alt="Best Deal Tag" src="/static/chooseright/media/best deal.png">
+							</td>
+
+							<td class="centeralign text-center">
+								<div class="visit-store-btn">
+									<a href="{{i.store_link}}">Visit Store 
+										<i class="fas fa-long-arrow-alt-right"></i>
+									</a>
+
+								</div>
+							</td>
+						</tr>
+
+						{% elif com_list.min_price != i.product_price and com_list.max_price != i.product_price and i.product_review == 'exellent' %}
+						<tr class="product-information" style="">
+							<td class="centeralign">
+								<img class="store-logo" alt="Store Logo" src="{% for s in store %}{% if s.store_id == i.store_id %}{{s.image.url}}{% endif %}{% endfor %}">
+							</td>
+
+							<td style="font-weight:bold;" class="txtprice" align="center">
+								<span>Rs. {{i.product_price}}</span>
+							</td>
+
+							<td class="lowest-price">
+								<img class="lowest-price-tag" id="lowest-price-tag_{{ forloop.counter }}" alt="Best Deal Tag" src="/static/chooseright/media/best deal.png">
+							</td>
+
+							<td class="centeralign text-center">
+								<div class="visit-store-btn">
+									<a href="{{i.store_link}}">Visit Store 
+										<i class="fas fa-long-arrow-alt-right"></i>
+									</a>
+
+								</div>
+							</td>
+						</tr>
+
+						{% elif com_list.min_price == i.product_price and i.product_review == 'fair' %}
+						<tr class="product-information" style="">
+							<td class="centeralign">
+								<img class="store-logo" alt="Store Logo" src="{% for s in store %}{% if s.store_id == i.store_id %}{{s.image.url}}{% endif %}{% endfor %}">
+							</td>
+
+							<td style="font-weight:bold;" class="txtprice" align="center">
+								<span>Rs. {{i.product_price}}</span>
+							</td>
+
+							<td class="lowest-price">
+								<img class="lowest-price-tag" id="lowest-price-tag_{{ forloop.counter }}" alt="Best Deal Tag" src="/static/chooseright/media/best deal.png">
+							</td>
+
+							<td class="centeralign text-center">
+								<div class="visit-store-btn">
+									<a href="{{i.store_link}}">Visit Store 
+										<i class="fas fa-long-arrow-alt-right"></i>
+									</a>
+
+								</div>
+							</td>
+						</tr>
+
+						{% elif com_list.min_price != i.product_price and com_list.max_price != i.product_price and i.product_review == 'good' %}
+						<tr class="product-information" style="">
+							<td class="centeralign">
+								<img class="store-logo" alt="Store Logo" src="{% for s in store %}{% if s.store_id == i.store_id %}{{s.image.url}}{% endif %}{% endfor %}">
+							</td>
+
+							<td style="font-weight:bold;" class="txtprice" align="center">
+								<span>Rs. {{i.product_price}}</span>
+							</td>
+
+							<td class="lowest-price">
+								<img class="lowest-price-tag" id="lowest-price-tag_{{ forloop.counter }}" alt="Best Deal Tag" src="/static/chooseright/media/best deal.png">
+							</td>
+
+							<td class="centeralign text-center">
+								<div class="visit-store-btn">
+									<a href="{{i.store_link}}">Visit Store 
+										<i class="fas fa-long-arrow-alt-right"></i>
+									</a>
+
+								</div>
+							</td>
+						</tr>
+
+						{% elif com_list.min_price != i.product_price and com_list.max_price != i.product_price and i.product_review == 'fair' %}
+						<tr class="product-information" style="">
+							<td class="centeralign">
+								<img class="store-logo" alt="Store Logo" src="{% for s in store %}{% if s.store_id == i.store_id %}{{s.image.url}}{% endif %}{% endfor %}">
+							</td>
+
+							<td style="font-weight:bold;" class="txtprice" align="center">
+								<span>Rs. {{i.product_price}}</span>
+							</td>
+
+							<td class="lowest-price">
+								<img class="lowest-price-tag" id="lowest-price-tag_{{ forloop.counter }}" alt="Best Deal Tag" src="/static/chooseright/media/best deal.png">
+							</td>
+
+							<td class="centeralign text-center">
+								<div class="visit-store-btn">
+									<a href="{{i.store_link}}">Visit Store 
+										<i class="fas fa-long-arrow-alt-right"></i>
+									</a>
+
+								</div>
+							</td>
+						</tr>
+
+						{% elif com_list.max_price == i.product_price and i.product_review == 'exellent' %}
+						<tr class="product-information" style="">
+							<td class="centeralign">
+								<img class="store-logo" alt="Store Logo" src="{% for s in store %}{% if s.store_id == i.store_id %}{{s.image.url}}{% endif %}{% endfor %}">
+							</td>
+
+							<td style="font-weight:bold;" class="txtprice" align="center">
+								<span>Rs. {{i.product_price}}</span>
+							</td>
+
+							<td class="lowest-price">
+								<img class="lowest-price-tag" id="lowest-price-tag_{{ forloop.counter }}" alt="Best Deal Tag" src="/static/chooseright/media/best deal.png">
+							</td>
+
+							<td class="centeralign text-center">
+								<div class="visit-store-btn">
+									<a href="{{i.store_link}}">Visit Store 
+										<i class="fas fa-long-arrow-alt-right"></i>
+									</a>
+
+								</div>
+							</td>
+						</tr>
+
+						{% elif com_list.max_price == i.product_price and i.product_review == 'good' %}
+						<tr class="product-information" style="">
+							<td class="centeralign">
+								<img class="store-logo" alt="Store Logo" src="{% for s in store %}{% if s.store_id == i.store_id %}{{s.image.url}}{% endif %}{% endfor %}">
+							</td>
+
+							<td style="font-weight:bold;" class="txtprice" align="center">
+								<span>Rs. {{i.product_price}}</span>
+							</td>
+
+							<td class="lowest-price">
+								<img class="lowest-price-tag" id="lowest-price-tag_{{ forloop.counter }}" alt="Best Deal Tag" src="/static/chooseright/media/best deal.png">
+							</td>
+
+							<td class="centeralign text-center">
+								<div class="visit-store-btn">
+									<a href="{{i.store_link}}">Visit Store 
+										<i class="fas fa-long-arrow-alt-right"></i>
+									</a>
+
+								</div>
+							</td>
+						</tr>
+
+						{% elif com_list.max_price == i.product_price and i.product_review == 'fair' %}
+						<tr class="product-information" style="">
+							<td class="centeralign">
+								<img class="store-logo" alt="Store Logo" src="{% for s in store %}{% if s.store_id == i.store_id %}{{s.image.url}}{% endif %}{% endfor %}">
+							</td>
+
+							<td style="font-weight:bold;" class="txtprice" align="center">
+								<span>Rs. {{i.product_price}}</span>
+							</td>
+
+							<td class="lowest-price">
+								<img class="lowest-price-tag" id="lowest-price-tag_{{ forloop.counter }}" alt="Best Deal Tag" src="/static/chooseright/media/best deal.png">
+							</td>
+
+							<td class="centeralign text-center">
+								<div class="visit-store-btn">
+									<a href="{{i.store_link}}">Visit Store 
+										<i class="fas fa-long-arrow-alt-right"></i>
+									</a>
+
+								</div>
+							</td>
+						</tr>
+
+						{% elif com_list.min_price == i.product_price and i.product_review == ''  %}
+						<tr class="product-information" style="">
+							<td class="centeralign">
+								<img class="store-logo" alt="Store Logo" src="{% for s in store %}{% if s.store_id == i.store_id %}{{s.image.url}}{% endif %}{% endfor %}">
+							</td>
+
+							<td style="font-weight:bold;" class="txtprice" align="center">
+								<span>Rs. {{i.product_price}}</span>
+							</td>
+
+							<td class="lowest-price">
+								<img class="lowest-price-tag" id="lowest-price-tag_{{ forloop.counter }}" alt="Best Deal Tag" src="/static/chooseright/media/best deal.png">
+							</td>
+
+							<td class="centeralign text-center">
+								<div class="visit-store-btn">
+									<a href="{{i.store_link}}">Visit Store 
+										<i class="fas fa-long-arrow-alt-right"></i>
+									</a>
+
+								</div>
+							</td>
+						</tr>
+						{% elif com_list.min_price != i.product_price and com_list.max_price != i.product_price and i.product_review == ''  %}
+						<tr class="product-information" style="">
+							<td class="centeralign">
+								<img class="store-logo" alt="Store Logo" src="{% for s in store %}{% if s.store_id == i.store_id %}{{s.image.url}}{% endif %}{% endfor %}">
+							</td>
+
+							<td style="font-weight:bold;" class="txtprice" align="center">
+								<span>Rs. {{i.product_price}}</span>
+							</td>
+
+							<td class="lowest-price">
+								<img class="lowest-price-tag" id="lowest-price-tag_{{ forloop.counter }}" alt="Best Deal Tag" src="/static/chooseright/media/best deal.png">
+							</td>
+
+							<td class="centeralign text-center">
+								<div class="visit-store-btn">
+									<a href="{{i.store_link}}">Visit Store 
+										<i class="fas fa-long-arrow-alt-right"></i>
+									</a>
+
+								</div>
+							</td>
+						</tr>
+						{% elif com_list.max_price == i.product_price and i.product_review == ''  %}
+						<tr class="product-information" style="">
+							<td class="centeralign">
+								<img class="store-logo" alt="Store Logo" src="{% for s in store %}{% if s.store_id == i.store_id %}{{s.image.url}}{% endif %}{% endfor %}">
+							</td>
+
+							<td style="font-weight:bold;" class="txtprice" align="center">
+								<span>Rs. {{i.product_price}}</span>
+							</td>
+
+							<td class="lowest-price">
+								<img class="lowest-price-tag" id="lowest-price-tag_{{ forloop.counter }}" alt="Best Deal Tag" src="/static/chooseright/media/best deal.png">
+							</td>
+
+							<td class="centeralign text-center">
+								<div class="visit-store-btn">
+									<a href="{{i.store_link}}">Visit Store 
+										<i class="fas fa-long-arrow-alt-right"></i>
+									</a>
+
+								</div>
+							</td>
+						</tr>
+
+						{% endif %}
+
+
+				{% endfor %}
+
+			</tbody>
+
+		</table> 
+
+	</div>
+
+</div>
+

@@ -1,0 +1,59 @@
+{% load static %}
+{% load socialaccount %}
+{% providers_media_js %}
+
+
+<!DOCTYPE html>
+<html>
+
+<head>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+	<link href="{% static 'chooseright/css/bootstrap.css' %}?{% now 'U' %}" rel="stylesheet" type="text/css">
+	<link href="{% static 'chooseright/css/bootstrap.min.css' %}?{% now 'U' %}" rel="stylesheet" type="text/css">
+	<link href="{% static 'tellme/feedback.min.css' %}" rel="stylesheet">
+	<link href="{% static 'chooseright/icons/Fonts Awesome Icons/css/all.css' %}" rel="stylesheet" type="text/css">
+	<link rel="icon" href="{% static 'chooseright/icons/favicon.ico' %}">
+	<link rel="shortcut icon" href="{% static 'chooseright/icons/favicon.ico' %}" >
+	<link rel="icon" type="image/gif" href="{% static 'chooseright/icons/animated_favicon.gif' %}" >
+	<link href="{% static 'chooseright/css/style.css' %}?{% now 'U' %}" rel="stylesheet" type="text/css">
+
+	<title class="title">{% block title %}{{title}}{% endblock title %}</title>
+
+</head>
+
+<body>
+
+	<div class="page-wrapper">
+
+		{# Getting header template for the page #}
+		{% include "chooseright/header.html" %}
+
+		{# Getting navigation bar template for the page #}
+		{% include "chooseright/navbar.html" %}
+
+		<div class="content-wrapper">
+			{% if messages %}
+			{% for message in messages %}
+			<div class="alert alert-{{ message.tags }}">
+				{{ message }}
+			</div>
+			{% endfor %}
+			{% endif %}
+			{% block content %}
+			{% endblock content %}
+		</div>
+
+		{% include 'chooseright/pagination.html' %}
+
+		<button type="button" id="feedback-btn" class="btn btn-info vertical-right-aligned">
+			Feedback <span class="glyphicon glyphicon-bullhorn" aria-hidden="true"></span>
+		</button>
+	</div>
+	{# Getting footer template for the page #}
+	{% include "chooseright/footer.html" %}
+	{% include 'chooseright/scripts.html' %}
+
+	{%  include 'tellme/js_inc.html' %}
+</body>

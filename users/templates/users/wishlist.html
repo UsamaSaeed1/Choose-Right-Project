@@ -1,0 +1,135 @@
+{% extends 'chooseright/base.html' %}
+
+{% block content %}
+
+<div id="page-content" class="no-padding no-shadow">
+
+
+	<h2 class="page-title">My Account</h2>
+
+	<div class="no-padding no-shadow profile-content">
+		<div class="side-bar-menu-wrapper column-left-lg">
+
+			<div class="widget">
+
+				<div class="sidebar-widget">
+
+					<h2>My Apps</h2>
+					<hr>
+
+					<ul class="widget-list">
+
+						<li class="">
+							<a class="widget-link" href="{% url 'users:wish_list' %}">
+								<span>
+									<i class="far fa-heart"></i>
+									Wish List
+								</span>
+							</a>
+						</li>
+
+						<li class="">
+							<a class="widget-link" href="{% url 'users:feedback' %}">
+								<span>
+									<i class="fas fa-feather-alt"></i>
+									Feedback
+								</span>
+							</a>
+						</li>
+
+					</ul>
+
+				</div>
+
+			</div>
+
+			<div class="widget">
+
+				<div class="sidebar-widget">
+
+					<h2>Account Options</h2>
+					<hr>
+
+					<ul class="widget-list">
+						<li class="">
+							<a class="widget-link" href="{% url 'users:dash_board' %}">
+								<span>
+									<i class="fas fa-user-circle"></i>
+									Dashboard
+								</span>
+							</a>
+						</li>
+						<li class="">
+							<a class="widget-link" href="{% url 'users:change_password' %}">
+								<span>
+									<i class="fas fa-key"></i>
+									Change Password
+								</span>
+							</a>
+						</li>
+						<li class="">
+							<a class="widget-link" href="{% url 'users:profile' %}">
+								<span>
+									<i class="fas fa-user-cog"></i>
+									Update Profile
+								</span>
+							</a>
+						</li>
+					</ul>
+
+				</div>
+
+			</div>
+
+		</div>
+
+
+		<div class="column-right-lg">
+
+			<div class="dashboard-box">
+
+				<div class="account-options-header">
+					<span class="account-options-tittle"> My Wishlist </span>
+				</div>
+					{% if wishlist %}
+						<div class="product-row">
+							{% for entity in wishlist %}
+								<div class="card-container">
+
+									<div class="card-inside">
+										<img class="card-img-top" src="{{entity.wished_product.image.url}}" alt="Card image cap">
+										<div class="card-body">
+											<a class="card-title" href="{% url 'core:compare' %}?p_name={{entity.wished_product.product_name}}">{{entity.wished_product.product_name}}
+											</a>
+											<div class="card-price">
+												<span class="price-sign">Rs.</span>
+												<span class="price">
+													{{entity.wished_product.product_price}}
+												</span>
+											</div>
+										</div>
+									</div>
+
+									<div class="card-compare">
+										<a href="{% url 'core:compare' %}?p_name={{entity.wished_product.product_name}}" class="compare-button"><span>Let's Compare</span></a>
+									</div>
+
+								</div>
+							{% endfor %}
+						</div>
+					{% else %}
+					<div class="account-options-content">
+						<p class="empty-list">Sorry! Your wishlist seems empty.</p>
+						<p class="empty-list">Add products to your wishlist to see more crowd here.</p>
+					</div>
+					{% endif %}
+			</div>
+
+			
+
+		</div>
+
+	</div>
+</div>
+
+{% endblock content %}

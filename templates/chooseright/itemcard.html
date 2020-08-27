@@ -1,0 +1,29 @@
+<div class="product-row">
+
+	{% for products in product_pages %}
+
+			<div class="card-container">
+
+				<div class="card-inside">
+					<img class="card-img-top" src="/static/media/Logo.png" alt="Card image cap">
+					<div class="card-body">
+						<a class="card-title" href="{% url 'core:compare' %}">{{products.product_name}}</a>
+						<div class="card-price">
+							<span class="price-sign">Rs.</span>
+							<span class="price">
+								{{products.product_price}}
+							</span>
+						</div>
+					</div>
+				</div>
+
+				<div class="card-compare">
+					<a href="{% url 'core:compare' %}?p_name={% for i in product %}{% if products.product_name == i.product_name %}{{i.product_name}}{% endif %}{% endfor %}" class="compare-button"><span>Let's Compare</span></a>
+				</div>
+
+			</div>	
+
+	{% endfor %}
+
+</div>
+

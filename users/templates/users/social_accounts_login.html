@@ -1,0 +1,34 @@
+{% load socialaccount %}
+{% providers_media_js %}
+
+
+<div class="or-border">
+	<span>or</span>
+</div>
+
+<div class="social-options">
+
+	<!--Facebook-->
+	<a href='{% provider_login_url "facebook" method="js_sdk" %}'
+	class="btn btn-social-icon btn-outline-facebook btn-facebook">
+		<i class="fab fa-facebook-f pr-1"></i> 
+		 Log In with Facebook
+	</a>
+	
+	{% comment %}
+	<!--Twitter-->
+	<a href='#'
+	class="btn btn-social-icon btn-outline-twitter btn-twitter">
+		<i class="fab fa-twitter pr-1"></i> 
+		Log In with Twitter
+	</a>
+	{% endcomment %}
+
+	<!--Google +-->
+	<a href='{% provider_login_url "google" %}'
+	class="btn btn-social-icon btn-outline-gmail btn-gmail">
+		<i class="fab fa-google-plus-g pr-1"></i>
+		Log In with Google +
+	</a>
+
+</div>

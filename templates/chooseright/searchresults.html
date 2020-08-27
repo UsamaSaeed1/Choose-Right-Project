@@ -1,0 +1,172 @@
+{% extends 'chooseright/base.html' %}
+
+{% block content %}
+
+<div class="content-holder">
+
+
+	<div class="side-bar-menu-wrapper">
+
+		<div class="widget">
+
+			<div id="product-brand-widget" class="sidebar-widget">
+
+				<h2>Brands</h2>
+				<hr>
+
+				<ul class="widget-list">
+
+					{% for brands in brand %}
+					<li class="">
+						<a class="widget-link" href="{% url 'core:brand' slug_text=brands.slug %}">
+							<span>{{brands.name}}</span>
+						</a>
+					</li>
+					{% endfor %}
+
+				</ul>
+
+			</div>
+
+		</div>
+
+
+		{% comment %}
+		<div class="widget">
+
+			<div id="product-store-widget" class="sidebar-widget">
+
+				<h2>Stores</h2>
+				<hr>
+
+				<ul class="widget-list">
+
+					{% for stores in store %}
+					<li class="">
+						<a class="widget-link" href="">
+							<span>{{stores.store_name}}</span>
+						</a>
+					</li>
+					{% endfor %}
+				</ul>
+
+			</div>
+
+		</div>
+		{% endcomment %}
+
+		<div class="widget">
+
+			<div id="product-budget-widget">
+
+				<h2>Specify Your Budget</h2>
+				<hr>
+
+				<div class="product-budget-selection">
+
+					<form class="price-filter-wrapper" action="{{ request.path }}">
+						<div class="price-input-wrapper">
+							<input id="mini-value" class="price-input" type="number" name="mini-value" placeholder="Min." required="">
+							<span class="price-input-sign">Rs.</span>
+						</div>
+
+						<span class="price-filter-span">to</span>
+
+						<div class="price-input-wrapper">
+							<input id="max-value" class="price-input" type="number" name="max-value" placeholder="Max." required="">
+							<span class="price-input-sign">Rs.</span>
+						</div>
+						<br/>
+						<button class="price-filter-apply" type="button" onclick="getSearchQuery('{{ request.get_full_path }}');">Apply</button>
+					</form>
+
+				</div>
+
+			</div>
+
+		</div>
+
+	</div>
+
+	<div class="search-results-container">
+
+		<div class="search-result-bar">
+			<div class="search-result-bar-left">
+				<h1>Search Results for 
+					<span>{{query}}</span>
+				</h1>
+			</div>
+
+			<div class="search-result-bar-right">
+				<span class="filter">
+					<i class="fas fa-funnel-dollar"></i>
+					Filter
+				</span>
+				<span class="sort-txt">Sort By: </span>
+				<span class="sort-select">
+					<select name="sortby" id="sortby">
+						<option value="" selected>Sort By</option>
+						<option value="{% url 'core:search' %}?q={{query}}&price=asc"> Price Low To High </option>
+						<option value="{% url 'core:search' %}?q={{query}}&price=desc"> Price High To Low </option>
+					</select>
+				</span>
+			</div>
+		</div>
+
+		{% if request.GET.q != "" %}
+
+			{% if results %}
+
+				<div class="product-row">
+
+					{% for products in product_pages %}
+
+					<div class="card-container">
+
+						<div class="card-inside">
+							<img class="card-img-top" src="{% for i in results %}{% if products.product_id == i.product_id %}{{i.image.url}}{% endif %}{% endfor %}" alt="Product Image">
+							<div class="card-body">
+								<a class="card-title" href="{% url 'core:compare' %}?p_name={{products.product_name}}">{{products.product_name}}</a>
+								<div class="card-price">
+									<span class="price-sign">Rs.</span>
+									<span class="price">
+										{{products.product_price}}
+									</span>
+								</div>
+							</div>
+						</div>
+
+						<div class="card-compare">
+							<a href="{% url 'core:compare' %}?p_name={{products.product_name}}" class="compare-button"><span>Let's Compare</span></a>
+						</div>
+
+					</div>	
+
+					{% endfor %}
+
+				</div>
+
+			{% else %}
+				<div class="content-empty">
+					<p class="empty-list">
+						<strong>Sorry we didn't find any relevant match for your search: {{request.GET.q}}</strong>
+						<br><br>
+						To proceed, you can perform one of the following actions:
+						<br>
+						- Review your search term for spelling or typing mistakes
+						<br>
+						- You can review you search term to be more specific to the product, try more general keywords
+						<br>
+						- Include exact product name in search term if you have it
+					</p>
+				</div>
+			{% endif %}
+
+		{% endif %}
+
+	</div>
+
+</div>
+
+
+{% endblock %}

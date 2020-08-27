@@ -1,0 +1,87 @@
+<div class="header-wrapper">
+
+	<div class="header-center">
+
+		<div class="nav-menu-dropdown">
+			{% include "chooseright/navbar_dropdown.html" %}
+		</div>
+
+		<div class="logo-left">
+			<a href="{% url 'core:home' %}">
+				<image class="logo" src="/static/chooseright/media/Logo.png" alt="Choose Right Logo" width="" height="100">
+				</image>
+			</a>
+		</div>
+
+		<div class="search-box-container">
+			<form action="{% url 'core:search' %}" method="GET" value="{{request.GET.q}}">
+				<input type="text" id="search" name="q" value="{{request.GET.q}}" placeholder="Search for products to compare" required>
+				<button class="search-button" type="submit" value="submit">
+					<i class="fas fa-search">
+					</i>
+				</button>	
+			</form>
+		</div>
+
+		<div class="settings">
+			<ul class="setting-options">
+				<li id="search-mobile" class="search-icon">
+					<i class="fas fa-search fa-2x"></i>
+				</li>
+				{% if user.is_authenticated %}
+
+					<li class="user-profile">
+						<span class="profile-menu">
+							<img class="profile-image" src="{{ user.profile.image.url  }}" alt="user">
+							<button id="user-profile-dropdown-btn" type="button">
+								{% if user.first_name %}
+									{{user.first_name}}
+								{% else %}
+									{{user.username}}
+								{% endif %}
+								<span>
+								<i class="fas fa-caret-down"></i>
+								</span>
+							</button>
+							
+						</span>
+					</li>
+
+					<div id="user-profile-menu-options" class="un-active-menu">
+						<ul class="user-dropdown-menu">
+							<li>
+								<span>
+									<i class="fas fa-user-circle"></i>
+									<a href="{% url 'users:dash_board' %}">My Account</a>
+								</span>
+							</li>
+							<li>
+								<span>
+									<i class="far fa-heart"></i>
+									<a href="{% url 'users:wish_list' %}">Wishlist</a>
+								</span>
+							</li>	
+							<li><hr></li>
+							<li>
+								<span>
+									<i class="fas fa-sign-out-alt"></i>
+									<a href="{% url 'users:logout' %}?next={% firstof request.get_full_path '/' %}">Log Out</a>
+								</span>
+							</li>	
+						</ul>
+					</div>
+
+				{% else %}
+					<li class="sign-in">
+						<a href="{% url 'users:login' %}?next={% firstof request.get_full_path '/' %}">Log In</a>
+					</li>
+					<li class="sign-up">
+						<a id="btn-sign-up" href="{% url 'users:register' %}">Register</a>
+					</li>	
+				{% endif %}
+			</ul>
+		</div>
+
+	</div>
+
+</div>

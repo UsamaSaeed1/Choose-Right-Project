@@ -1,0 +1,48 @@
+{% if product_pages.has_other_pages %}
+
+
+<div class="pagination">
+
+	{% if product_pages.has_previous %}
+
+		<a class="pagination-action" href="?page=1{% if query %}&q={{query}}{% endif %}{% if min and max %}&mini={{min}}&max={{max}}{% endif %}{% if price %}&price={{price}}{% endif %}">
+			<i class="fas fa-angle-double-left"></i>
+		</a>
+		<a class="pagination-action" href="?page={{product_pages.previous_page_number}}{% if query %}&q={{query}}{% endif %}{% if min and max %}&mini={{min}}&max={{max}}{% endif %}{% if price %}&price={{price}}{% endif %}">
+			<i class="fas fa-angle-left"></i>
+		</a>
+
+	{% endif %}
+
+	{% for num in product_pages.paginator.page_range %}
+
+		{% if product_pages.number == num %}
+			
+			<span class="pagination-number pagination-current">
+				{{ num }}
+			</span>
+
+		{% elif num > product_pages.number|add:'-3' and num < product_pages.number|add:'3' %}
+
+			<a class="pagination-number" href="?page={{num}}{% if query %}&q={{query}}{% endif %}{% if min and max %}&mini={{min}}&max={{max}}{% endif %}{% if price %}&price={{price}}{% endif %}">
+				{{ num }}
+			</a>
+
+		{% endif %}
+
+	{% endfor%}
+
+	{% if product_pages.has_next %}
+
+		<a class="pagination-action" href="?page={{product_pages.next_page_number}}{% if query %}&q={{query}}{% endif %}{% if min and max %}&mini={{min}}&max={{max}}{% endif %}{% if price %}&price={{price}}{% endif %}">
+			<i class="fas fa-angle-right"></i>
+		</a>
+		<a class="pagination-action" href="?page={{product_pages.paginator.num_pages}}{% if query %}&q={{query}}{% endif %}{% if min and max %}&mini={{min}}&max={{max}}{% endif %}{% if price %}&price={{price}}{% endif %}">
+			<i class="fas fa-angle-double-right"></i>
+		</a>
+
+	{% endif %}
+
+</div>
+
+{% endif %}

@@ -1,0 +1,111 @@
+{% extends 'chooseright/base.html' %}
+
+{% block content %}
+
+<div class="item-detail-wraper">
+
+	<div class="item-image-wraper">
+
+		<img alt="Product Image" src="{% for i in query %}{% if i.product_price == com_list.min_price %}{{i.image.url}}{% endif %}{% endfor %}">
+	</div>
+
+	<div class="item-information-wraper">
+
+		<div class="item-tittle">
+			<span>Name:</span>
+			{% for i in query %}
+				{% if com_list.min_price == i.product_price %}{{i.product_name}}{% endif %}
+			{% endfor %}
+		</div>
+
+		<div class="item-brand">
+			<span>Brand:</span>
+			{% for i in query %}
+				{% if com_list.min_price == i.product_price %}{{i.product_brand}}{% endif %}
+			{% endfor %}
+		</div>
+
+		<div class="item-price">
+			<span>Price:</span>
+			{{com_list.min_price}}
+		</div>
+
+		<div class="item-reviews">
+			<span>Reviews:</span>
+			{% for i in query %}
+				{% if com_list.min_price == i.product_price %}{{i.product_review}}{% endif %}
+			{% endfor %}
+		</div>
+
+		<div class="item-user-action">
+			{% if current_list %}
+			{% for i in query %}
+				{% if com_list.min_price == i.product_price %}
+					<div class="wishlist-option">
+						<i class="fas fa-heart-broken"></i>
+						<a href="{% url 'core:add_wishlist' wished_product=i.product_id %}?p_name={{i.product_name}}&wishlist=remove">Remove from Wishlist</a>
+					</div>
+				{% endif %}
+			{% endfor %}
+			{% else %}
+				<div class="wishlist-option">
+					<i class="far fa-heart"></i>
+					<a href="
+						{% for i in query %}
+						{% if com_list.min_price == i.product_price %}
+						{% url 'core:add_wishlist' wished_product=i.product_id %}?p_name={{i.product_name}}
+						{% endif %}
+						{% endfor %}">
+						Add to Wishlist
+					</a>
+				</div>
+			{% endif %}
+
+		</div>
+		<div class="social-share">
+			<div class="fb-share">
+				<i class="fab fa-facebook-f"></i>
+				<a href="https://www.facebook.com/sharer/sharer.php?u={{ request.build_absolute_uri }}">
+					Share on Facebook
+				</a>
+			</div>
+			<div class="twitter-share">
+				<i class="fab fa-twitter"></i>
+				<a href="https://twitter.com/home?status={{share_string}}%20{{ request.build_absolute_uri }}">
+					Share on Twitter
+				</a>
+			</div>
+		</div>			
+
+	</div>
+
+
+</div>
+
+<div class="compare1">
+	{% include 'chooseright/comparisondetails.html' %}
+	<div class="sidebar-menu-wraper">
+
+		<div class="sidebar-menu-heading">
+			<h2>Popular Brands</h2>
+			<hr>
+		</div>
+
+		<div class="sidebar-menu-body">
+
+			<ul class="sidebar-menu">
+
+				{% for brands in brand %}
+					<li>
+						<a href="{% url 'core:brand' slug_text=brands.slug %}">{{brands.name}}</a>
+					</li>
+				{% endfor %}
+
+			</ul>
+
+		</div>
+	</div>
+</div>
+{% include 'chooseright/specification.html' %}
+
+{% endblock content %}

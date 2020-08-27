@@ -1,0 +1,48 @@
+{% load static %}
+{% load socialaccount %}
+{% providers_media_js %}
+
+
+<!DOCTYPE html>
+<html>
+
+<head>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+	<link href="{% static 'chooseright/css/bootstrap.css' %}?{% now 'U' %}" rel="stylesheet" type="text/css">
+	<link href="{% static 'chooseright/css/bootstrap.min.css' %}?{% now 'U' %}" rel="stylesheet" type="text/css">
+	<link href="{% static 'chooseright/icons/Fonts Awesome Icons/css/all.css' %}" rel="stylesheet" type="text/css">
+	<link rel="icon" href="{% static 'chooseright/icons/favicon.ico' %}">
+	<link href="{% static 'chooseright/css/style.css' %}?{% now 'U' %}" rel="stylesheet" type="text/css">
+
+	<title>{% block title %}{{title}}{% endblock title %}</title>
+
+</head>
+
+<body>
+
+	<div class="page-wrapper">
+
+		<div class="header-extra">
+			<div class="logo-left">
+				<a href="{% url 'core:home' %}">
+					<image class="logo-extra" src="/static/chooseright/media/Logo.png" alt="Choose Right Logo" width="" height="100">
+					</image>
+				</a>
+			</div>
+		</div>
+
+
+		<div class="content-wrapper">
+
+			{% block content %}
+
+
+			{% endblock content %}
+
+		</div>
+
+		{% include 'chooseright/scripts.html' %}
+	</div>
+</body>

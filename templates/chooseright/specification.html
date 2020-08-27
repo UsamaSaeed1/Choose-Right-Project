@@ -1,0 +1,131 @@
+<div id="product-details-div" class="row">
+
+	<ul id="product-details-tab" class="navigation-tab">
+
+		<li id="detailstab" class="">
+			<a  onclick="myDetailsFunction()">Details</a>
+		</li>
+
+		<li id="reviewstab" class="">
+			<a  onclick="myReviewsFunction()">Reviews</a>
+		</li>
+
+		<li id="specificationtab" class="">
+			<a  onclick="mySpecificationFunction()">Specification</a>
+		</li>
+
+	</ul>
+
+	<div id="content-tab">
+
+		<div id="product-details" class="">
+			<!--Product Description-->
+			<br>
+			<span class="description">
+				{% for i in query %}
+				{% if com_list.min_price == i.product_price %}
+					{{i.product_specification.product_name}}
+				{% endif %}
+				{% endfor %}
+			</span>
+		</div>
+
+		<div id="product-reviews" class="">
+			<!--Product Reviews-->
+			<br>
+			<span class="description">
+				No reviews availble right now!
+			</span>
+		</div>
+
+		<div id="product-specifications" class="">
+
+			{% for i in query %}
+
+			{% if com_list.min_price == i.product_price %}
+
+				<div class="product-tab-title">{{i.product_name}}</div>
+				<table id="product_specifications-table" class="">
+					<tbody>
+						<tr class="product_brand specification">
+
+							<td class="s-title">Brand</td>
+							<td class="s-info">{{i.product_specification.product_brand}}</td>
+
+						</tr>
+						<tr class="release_year specification">
+
+							<td class="s-title">Release Year</td>
+							<td class="s-info">{{i.product_specification.release_year}}</td>
+
+						</tr>
+						<tr class="color specification">
+
+							<td class="s-title">Color</td>
+							<td class="s-info">{{i.product_specification.colore}}</td>
+
+						</tr>
+						<tr class="size specification">
+
+							<td class="s-title">Size</td>
+							<td class="s-info">{{i.product_specification.size}}</td>
+
+						</tr>
+						<tr class="ram specification">
+
+							<td class="s-title">Ram</td>
+							<td class="s-info">{{i.product_specification.ram}}</td>
+
+						</tr>
+						<tr class="storage specification">
+
+							<td class="s-title">Storage</td>
+							<td class="s-info">{{i.product_specification.storage}}</td>
+
+						</tr>
+						<tr class="sim specification">
+
+							<td class="s-title">Sim</td>
+							<td class="s-info">{{i.product_specification.sim}}</td>
+
+						</tr>
+						<tr class="weight specification">
+
+							<td class="s-title">Weight</td>
+							<td class="s-info">{{i.product_specification.weight}}</td>
+
+						</tr>
+						<tr class="multi_tasking specification">
+
+							<td class="s-title">Multi Tasking</td>
+							<td class="s-info">{{i.product_specification.multi_tasking}}</td>
+
+						</tr>
+						<tr class="processor specification">
+
+							<td class="s-title">Processor</td>
+							<td class="s-info">{{i.product_specification.processor}}</td>
+
+						</tr>
+						<tr class="touch_screen specification">
+
+							<td class="s-title">Touch Screen</td>
+							<td class="s-info">{{i.product_specification.touch_creen}}</td>
+
+						</tr>
+						<tr class="battery specification">
+
+							<td class="s-title">Battery</td>
+							<td class="s-info">{{i.product_specification.battery}}</td>
+
+						</tr>
+					</tbody>
+				</table>
+			{% endif %}
+
+			{% endfor %}
+		</div>
+
+	</div>
+
+</div>
