@@ -5,6 +5,7 @@ from . import views as core_views
 app_name = 'core'
 
 urlpatterns = [
+	path('base', core_views.base_view, name='base'),
 	path('', core_views.home_view, name='home'),
 	path('search/', core_views.search_view, name='search'),
 	path('catagory/<slug:slug_text>/', core_views.catagory_view, name='catagory'),

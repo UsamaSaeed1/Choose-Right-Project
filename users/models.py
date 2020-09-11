@@ -15,6 +15,9 @@ Gender_Option = (
 class User(AbstractUser):
     email = models.EmailField(_('email address'), unique=True)
 
+    def __str__(self):
+        return self.username
+
 
 
 class Profile(models.Model):
@@ -51,7 +54,7 @@ class Profile(models.Model):
         try:
             this = Profile.objects.get(id=self.id)
             if this.image != self.image:
-                if this.image != 'default.jpg':
+                if this.image != 'profile_pics/default.jpg':
                     this.image.delete(save=False)
 
         except: pass

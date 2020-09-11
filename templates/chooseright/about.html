@@ -1,23 +1,15 @@
-{% load static %}
-{% load socialaccount %}
-{% providers_media_js %}
-<!DOCTYPE html>
-<html>
-<head>
+{% extends 'chooseright/base.html' %}
+{% block content %}
 
-	<meta charset="utf-8">
-	<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+<div class="page-content">
 
-	<link href="{% static '/css/bootstrap.css' %}?{% now 'U' %}" rel="stylesheet" type="text/css">
-	<link href="{% static '/css/bootstrap.min.css' %}?{% now 'U' %}" rel="stylesheet" type="text/css">
-	<link href="{% static 'tellme/feedback.min.css' %}" rel="stylesheet">
-	<link href="{% static '/icons/Fonts Awesome Icons/css/all.css' %}" rel="stylesheet" type="text/css">
-	<link rel="icon" href="{% static '/icons/favicon.ico' %}">
-	<link href="{% static '/css/style.css' %}?{% now 'U' %}" rel="stylesheet" type="text/css">
+	<h2 class="main-title"> Who We Are</h2>
+	<p>Choose Right is the product of our work for fulfiling the final year project. We are a team of three members. We have worked on this project to make price comparison and shopping experiences easy for you – on a budget!, need a smart phone or a laptop. Yes we have got that covered for you. </p>
+	<p>This project is about three things; high-quality products, great savings and easy shopping!</p>
+	<p>We understand how the Pakistani economy and culture encourages you to go an extra mile in order to save money with every purchase. We just make it easier for you to do so!</p>
+	<p>Chooseright is your highway to effortless price comparison in the Pakistani market.</p>
+	<p>We’ve listed some of popular and not-so-popular merchants in Pakistan who sell similar high-quality products. So you don’t need to surf through different stores in the scorching heat (or in the super-chilled winters) to find out which one offers the best deal; we get you a list of merchants who sell the services/products you need, and the prices they charge.</p>
 
-	<title>About - Choose Right</title>
+</div>
 
-</head>
-<body>
-</body>
-</html>
+{% endblock %}

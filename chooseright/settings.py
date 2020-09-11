@@ -13,7 +13,7 @@ SECRET_KEY = '^zq)jnd@b07pjy5*(j5gif9g_rs3o@!)@807^!!=#bfknp7trd'
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = ['localhost', '127.0.0.1', 'fypchooseright.herokuapp.com']
+ALLOWED_HOSTS = ['localhost', '127.0.0.1']
 
 # Application definition
 INSTALLED_APPS = [
@@ -108,17 +108,17 @@ AUTH_PASSWORD_VALIDATORS = [
 ]
 
 #Registration with Confirmation Mail
-if DEBUG:
-    EMAIL_BACKEND = 'django.core.mail.backends.console.EmailBackend'
+# if DEBUG:
+#     EMAIL_BACKEND = 'django.core.mail.backends.console.EmailBackend'
 
-else:
-    EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'
-    EMAIL_HOST = 'smtp.gmail.com'
-    EMAIL_PORT = 587
-    EMAIL_USE_TLS = True
-    EMAIL_HOST_USER = os.environ.get('EMAIL_USER')
-    EMAIL_HOST_PASSWORD = os.environ.get('EMAIL_PASSWORD')
-    DEFAULT_FROM_EMAIL = 'Choose Right Team <admin@chooseright.com>'
+# else:
+EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'
+EMAIL_HOST = 'smtp.gmail.com'
+EMAIL_PORT = 587
+EMAIL_USE_TLS = True
+EMAIL_HOST_USER = os.environ.get('EMAIL_USER')
+EMAIL_HOST_PASSWORD = os.environ.get('EMAIL_PASSWORD')
+DEFAULT_FROM_EMAIL = 'Choose Right Team <admin@chooseright.com>'
 
 
 # Internationalization
@@ -178,4 +178,3 @@ SESSION_EXPIRE_AT_BROWSER_CLOSE = True
 
 #Send email to admin whenever user provides feedback
 TELLME_FEEDBACK_EMAIL = os.environ.get('EMAIL_USER')
-

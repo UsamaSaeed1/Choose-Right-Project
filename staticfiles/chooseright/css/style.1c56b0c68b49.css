@@ -2421,12 +2421,8 @@ a{
 /* Error Pages */
 .jumbotron{
 	position: absolute;
-	position: absolute;
-    top: 50%;
-    left: 50%;
-    -moz-transform: translateX(-50%) translateY(-50%);
-    -webkit-transform: translateX(-50%) translateY(-50%);
-    transform: translateX(-50%) translateY(-50%);
+	top: 100px;
+	bottom: 100px;
 	margin: auto;
 	background-color: inherit ! important;
 }

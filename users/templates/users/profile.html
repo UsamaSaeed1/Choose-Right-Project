@@ -97,7 +97,7 @@
 									<h2 class="account-heading"> Welcome {{user.username}}!</h2>
 									<p class="text-secondary">{{user.email}}</p>
 									<span class="text-secondary">Member Since:</span> 
-									<span class="text-secondary">{{user.date_joined}}</span> 
+									<span class="text-secondary">{{ user.date_joined|date:"D, d M, Y" }}</span> 
 								</div>
 							</div>
 						</span> 

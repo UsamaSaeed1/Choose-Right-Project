@@ -175,6 +175,7 @@ def dash_board_view_access(request):
 		title = request.user.username
 
 	current_user = request.user
+	catagory = CatagoryTable.objects.all()
 
 	wishlist = Wishlist.objects.all().filter(user_id__exact=current_user.id).count()
 	feedback = Feedback.objects.all().filter(user_id__exact=current_user.id).count()
@@ -182,7 +183,8 @@ def dash_board_view_access(request):
 	dash_board_view_dict = {
 		'title': title+"'s" + ' Profile - Choose Right',
 		'wishlist': wishlist,
-		'feedback': feedback
+		'feedback': feedback,
+		'catagory': catagory
 		}
 	return render(request, 'users/dash-board.html',dash_board_view_dict)
 
@@ -198,6 +200,7 @@ def wish_list_view(request):
 def wish_list_view_access(request):
 	current_user = request.user
 	wishlist = Wishlist.objects.all().filter(user_id__exact=current_user.id)
+	catagory = CatagoryTable.objects.all()
 
 	#Pagination 
 	page = request.GET.get('page',1)
@@ -213,6 +216,7 @@ def wish_list_view_access(request):
 		'title': 'Wishlist',
 		'wishlist': wishlist,
 		'product_pages': wishlist,
+		'catagory': catagory
 	}
 	return render(request, 'users/wishlist.html', wishlist_dict)
 
@@ -227,10 +231,12 @@ def feedback_view(request):
 def feedback_view_access(request):
 	current_user = request.user
 	feedback = Feedback.objects.all().filter(user_id__exact=current_user.id)
+	catagory = CatagoryTable.objects.all()
 
 	feedback_dict = {
 		'title': 'Feedback',
 		'feedback': feedback,
+		'catagory': catagory
 	}
 	return render(request, 'users/reviews.html',feedback_dict)
 
@@ -244,6 +250,7 @@ def profile_view(request):
 
 @login_required()  
 def profile_view_access(request):
+	catagory = CatagoryTable.objects.all()
 	if request.method == 'POST':
 		u_form = UserUpdateForm(request.POST,
 								instance=request.user)
@@ -264,7 +271,8 @@ def profile_view_access(request):
 	profile_dict = {
 		'title': 'Update Profile Information',
 		'u_form': u_form,
-		'p_form': p_form
+		'p_form': p_form,
+		'catagory': catagory
 	}
 
 	return render(request, 'users/profile.html', profile_dict)
@@ -278,6 +286,7 @@ def change_password_view(request):
 
 @login_required() 
 def change_password_view_access(request):
+	catagory = CatagoryTable.objects.all()
 	if request.method == 'POST':
 		form = PasswordChangeForm(data=request.POST, user = request.user)
 
@@ -293,7 +302,8 @@ def change_password_view_access(request):
 
 	change_password_view_dic = {
 		'title': 'Change Password',
-		'form': form
+		'form': form,
+		'catagory': catagory
 	}
 	return render(request, 'users/change_password.html', change_password_view_dic)
 

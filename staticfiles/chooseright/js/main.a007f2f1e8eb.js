@@ -81,25 +81,19 @@ function getInputValue(url){
 // Fuctions for specification template
 function myDetailsFunction() {
 	document.getElementById("detail-box").style.background = "linear-gradient(#E1DADA,#D3D3D3)";
-	document.getElementById("review-box").style.background = "none";
-	document.getElementById("specification-box").style.background = "none";
 	document.getElementById("product-details").style.display = "block";
 	document.getElementById("product-reviews").style.display = "none";
 	document.getElementById("product-specifications").style.display = "none";
 }
 
 function myReviewsFunction() {
-	document.getElementById("detail-box").style.background = "none";
 	document.getElementById("review-box").style.background = "linear-gradient(#E1DADA,#D3D3D3)";
-	document.getElementById("specification-box").style.background = "none";
 	document.getElementById("product-details").style.display = "none";
 	document.getElementById("product-reviews").style.display = "block";
 	document.getElementById("product-specifications").style.display = "none";
 }
 
 function mySpecificationFunction() {
-	document.getElementById("detail-box").style.background = "none";
-	document.getElementById("review-box").style.background = "none";
 	document.getElementById("specification-box").style.background = "linear-gradient(#E1DADA,#D3D3D3)";
 	document.getElementById("product-details").style.display = "none";	
 	document.getElementById("product-reviews").style.display = "none";

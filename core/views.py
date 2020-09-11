@@ -28,6 +28,8 @@ from django.core.paginator import (
 	PageNotAnInteger
 	)
 
+def base_view(request):
+	return render(request, "chooseright/base.html")
 
 def home_view(request):
 	catagory = CatagoryTable.objects.all()
@@ -60,7 +62,7 @@ def home_view(request):
 
 def search_view(request):
 	catagory = CatagoryTable.objects.all()
-	
+	brand = ''
 
 	#Handling user search quries and budget filter
 	if request.method == 'GET':
@@ -118,6 +120,7 @@ def search_view(request):
 		'brand': brand,
 		'product_pages': results,
 		'results': results,
+		'tag': 'catagory',
 		'query': query,
 		'min': minimum_price,
 		'max': maximum_price,
@@ -180,8 +183,9 @@ def catagory_view(request, slug_text):
 	
 	result_dict = {
 		'title': 'Comapre '+slug_text+' prices',
-		'categories': catagory,
+		'catagory': catagory,
 		'brand': brand,
+		'tag': 'category',
 		'product_pages': product_pages,
 		'product': products,
 		'slug': slug_text,
@@ -247,6 +251,7 @@ def brand_view(request, slug_text):
 		'title': 'Comapre '+slug_text+' products',
 		'catagory': catagory,
 		'brand': brand,
+		'tag': 'brand',
 		'product_pages': product_pages,
 		'product': products,
 		'slug': slug_text,

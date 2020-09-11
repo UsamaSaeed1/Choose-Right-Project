@@ -18,13 +18,22 @@
 </head>
 <body>
 
-	<div class="jumbotron">
-		<h1 class="display-4">404 Error! Page Not Found</h1>
-		<p class="lead">Sorry, The page you requested is missing or does not exist.</p>
-		<hr class="my-4">
-		<p class="lead">
-			<a class="btn btn-primary btn-lg" href="{% url 'core:home' %}" role="button">Visit Homepage</a>
-		</p>
+	<div class="page-wrapper">
+		<div class="jumbotron">
+			<h1 class="display-4">404 Error! Page Not Found</h1>
+			<p class="lead">Sorry, The page you requested is missing or does not exist.</p>
+			<div xmlns="http://www.w3.org/1999/xhtml" id="errorLongDesc">
+				<strong xmlns="http://www.w3.org/1999/xhtml">If that address is correct, here are other things you can try:</strong>
+				<ul xmlns="http://www.w3.org/1999/xhtml">
+					<li>Try again later.</li>
+					<li>Check your network connection.</li>
+				</ul>
+			</div>
+			<hr class="my-4">
+			<p class="lead">
+				<a class="btn btn-primary btn-lg" href="{% url 'core:home' %}" role="button">Visit Homepage</a>
+			</p>
+		</div>
 	</div>
 
 	{% include 'chooseright/scripts.html' %}
